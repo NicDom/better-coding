@@ -3,7 +3,7 @@
 
 ### Disclaimer
 
-This Keyboard Layout is a fork of [kwrtz] german programer [keybord layout][kwrtz-layout].
+This Keyboard Layout is an extension of [kwrtz] german programer [keybord layout][kwrtz-layout].
 Make sure to check his repo out, if you like this one.
 
 ----------------------------
