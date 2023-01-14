@@ -1,0 +1,407 @@
+[
+  {
+    "name": "window-switch-layer-and-extra-arrow-keys"
+  },
+  [
+    {
+      "a": 7
+    },
+    "",
+    {
+      "x": 1
+    },
+    "",
+    "",
+    "",
+    "",
+    {
+      "x": 0.5
+    },
+    "",
+    "",
+    "",
+    "",
+    {
+      "x": 0.5
+    },
+    "",
+    "",
+    "",
+    {
+      "c": "#cf7ecf",
+      "a": 4,
+      "fa": [
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    "F12\n\n<i class='fa fa-info-circle'></i>\nShow Layout",
+    {
+      "x": 0.25,
+      "c": "#cccccc",
+      "f": 3
+    },
+    "PrtSc",
+    {
+      "f": 3
+    },
+    "Scroll Lock",
+    {
+      "f": 3
+    },
+    "Pause\nBreak"
+  ],
+  [
+    {
+      "y": 0.5,
+      "a": 7
+    },
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    {
+      "a": 4,
+      "f": 3,
+      "w": 2
+    },
+    "Backspace",
+    {
+      "x": 0.25,
+      "f": 3
+    },
+    "Insert",
+    {
+      "f": 3
+    },
+    "Home",
+    {
+      "f": 3
+    },
+    "PgUp",
+    {
+      "x": 0.25,
+      "f": 3
+    },
+    "Num Lock",
+    {
+      "f": 3
+    },
+    "/",
+    {
+      "f": 3
+    },
+    "*",
+    {
+      "f": 3
+    },
+    "-"
+  ],
+  [
+    {
+      "f": 3,
+      "w": 1.5
+    },
+    "Tab",
+    {
+      "a": 7
+    },
+    "",
+    "",
+    "",
+    "",
+    {
+      "c": "#c2e6ff",
+      "a": 4
+    },
+    "T\n\n\nMessenger",
+    {
+      "c": "#cccccc",
+      "a": 7
+    },
+    "",
+    {
+      "c": "#c2e6ff",
+      "a": 4
+    },
+    "U\n\n\nFile Explorer Previous",
+    {
+      "c": "#c1ffd1",
+      "fa": [
+        1
+      ]
+    },
+    "I\n\n\n<i class='kb kb-Arrows-Up'></i>",
+    {
+      "c": "#ffe9a3",
+      "fa": [
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    "O\n\n\nFile Explorer Up",
+    {
+      "c": "#cccccc",
+      "a": 7
+    },
+    "",
+    "",
+    "",
+    {
+      "x": 0.25,
+      "a": 4,
+      "f": 3,
+      "w": 1.25,
+      "h": 2,
+      "w2": 1.5,
+      "h2": 1,
+      "x2": -0.25
+    },
+    "Enter",
+    {
+      "x": 0.25,
+      "f": 3
+    },
+    "Delete",
+    {
+      "f": 3
+    },
+    "End",
+    {
+      "f": 3
+    },
+    "PgDn",
+    {
+      "x": 0.25,
+      "f": 3
+    },
+    "7\nHome",
+    {
+      "f": 3
+    },
+    "8\n↑",
+    {
+      "f": 3
+    },
+    "9\nPgUp",
+    {
+      "f": 3,
+      "h": 2
+    },
+    "+"
+  ],
+  [
+    {
+      "f": 3,
+      "w": 1.75
+    },
+    "Caps Lock",
+    {
+      "c": "#ffffbc"
+    },
+    "A\n\n<i class='fa fa-book'></i>\nReference Manager",
+    {
+      "c": "#ffe9a3"
+    },
+    "S\n\n<i class='fa fa-expeditedssl'></i>\nPassword Manager",
+    {
+      "c": "#c1ffd1"
+    },
+    "D\n\n<i class='fa fa-folder-open-o'></i>\nFile Explorer",
+    {
+      "c": "#c2e6ff"
+    },
+    "F\n\n\nBrowser",
+    {
+      "c": "#cccccc",
+      "a": 7
+    },
+    "",
+    "",
+    {
+      "c": "#c2e6ff",
+      "a": 4,
+      "fa": [
+        1
+      ]
+    },
+    "J\n\n\n<i class='kb kb-Arrows-Left'></i>",
+    {
+      "c": "#c1ffd1"
+    },
+    "K\n\n\n<i class='kb kb-Arrows-Down'></i>",
+    {
+      "c": "#ffe9a3"
+    },
+    "L\n\n\n<i class='kb kb-Arrows-Right'></i>",
+    {
+      "c": "#cccccc",
+      "a": 7
+    },
+    "",
+    "",
+    "",
+    {
+      "x": 4.75,
+      "a": 4,
+      "f": 3
+    },
+    "4\n←",
+    {
+      "f": 3
+    },
+    "5",
+    {
+      "f": 3
+    },
+    "6\n→"
+  ],
+  [
+    {
+      "f": 3,
+      "w": 1.25
+    },
+    "Shift",
+    {
+      "a": 7
+    },
+    "",
+    "",
+    "",
+    {
+      "c": "#c1ffd1",
+      "a": 4,
+      "fa": [
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    "C\n\n<i class='fa fa-terminal'></i>\nTerminal",
+    {
+      "c": "#c2e6ff"
+    },
+    "V\n\n\nEditor",
+    {
+      "c": "#cccccc",
+      "a": 7
+    },
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    {
+      "a": 4,
+      "f": 3,
+      "w": 2.75
+    },
+    "Shift",
+    {
+      "x": 1.25,
+      "f": 3
+    },
+    "↑",
+    {
+      "x": 1.25,
+      "f": 3
+    },
+    "1\nEnd",
+    {
+      "f": 3
+    },
+    "2\n↓",
+    {
+      "f": 3
+    },
+    "3\nPgDn",
+    {
+      "f": 3,
+      "h": 2
+    },
+    "Enter"
+  ],
+  [
+    {
+      "f": 3,
+      "w": 1.25
+    },
+    "Ctrl",
+    {
+      "f": 3,
+      "w": 1.25
+    },
+    "Win",
+    {
+      "c": "#fdbfbe",
+      "w": 1.25
+    },
+    "Alt\n\n\nActivate Arrow Keys",
+    {
+      "c": "#cccccc",
+      "a": 7,
+      "w": 6.25
+    },
+    "",
+    {
+      "c": "#fdbfbe",
+      "a": 4,
+      "w": 1.25
+    },
+    "AltGr\n\n\nActivate Layer",
+    {
+      "c": "#cccccc",
+      "f": 3,
+      "w": 1.25
+    },
+    "Win",
+    {
+      "f": 3,
+      "w": 1.25
+    },
+    "Menu",
+    {
+      "f": 3,
+      "w": 1.25
+    },
+    "Ctrl",
+    {
+      "x": 0.25,
+      "f": 3
+    },
+    "←",
+    {
+      "f": 3
+    },
+    "↓",
+    {
+      "f": 3
+    },
+    "→",
+    {
+      "x": 0.25,
+      "f": 3,
+      "w": 2
+    },
+    "0\nIns",
+    {
+      "f": 3
+    },
+    ".\nDel"
+  ]
+]
