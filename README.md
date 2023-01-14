@@ -85,7 +85,7 @@ Pressing <kbd><</kbd> will run a web search with the currently selected text. Th
 
 The following layers [window-switch](#windowswitch) functionalities can be activated by holding <kbd>AltGr</kbd> down. The arrow key functionalities on the right side of the keyboard are available by pressing *<kbd>Alt</kbd>*.
 
-![alt-altgr-layer](images/alt-altgr-layer-short.png)
+![alt-altgr-layer](images/alt-altgr-layer.png)
 
 
 ## Added Functionalities
