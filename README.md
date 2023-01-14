@@ -36,7 +36,7 @@ scoop install autohotkey # installs autohotkey
 
 </details>
 
-Once installed just clone the repository and open `better-coding.ahk` with AutoHotKey. Alternatively, you can also just copy the content of the files (`better-coding.ahk` and all files in utils) in one file and run this file with AutoHotKey.
+Once installed just clone the repository and open `better_coding.ahk` with AutoHotKey. Alternatively, you can also just copy the content of the files (`better_coding.ahk` and all files in utils) in one file and run this file with AutoHotKey.
 
 
 <details open>
@@ -77,7 +77,7 @@ The following Layer is enabled by holding <kbd>CapsLock</kbd>, <kbd>ä</kbd> or 
 The following layer can be activated by holding <kbd>Space</kbd> down. If you press the <kbd>Space</kbd> key short, a Space character is printed (when the <kbd>Space</kbd> key is released). If you want a continuous printing of Space you have to hold down <kbd>Space</kbd> and press <kbd>Alt</kbd>.
 The layer was designed like the Ebene 4 of the neo-layout.org - but not exactly.
 
-Pressing <kbd><</kbd> will run a web search with the currently selected text. The search-engine may be "google", "brave", "ecosia" or "duckduckgo" and can be set at the beginning of ``better-coding.ahk``. Pressing <kbd>AltGr</kbd> will open the [`QuickCommand-Window`](#quickcommand-window)
+Pressing <kbd><</kbd> will run a web search with the currently selected text. The search-engine may be "google", "brave", "ecosia" or "duckduckgo" and can be set at the beginning of ``better_coding.ahk``. Pressing <kbd>AltGr</kbd> will open the [`QuickCommand-Window`](#quickcommand-window)
 
 ![Space-Layer](images/space-layer-short.png)
 
