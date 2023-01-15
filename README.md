@@ -99,7 +99,7 @@ The following layers [window-switch](#windowswitch) functionalities can be activ
 The quick-command window is a small input box gui on the lower left corner of the display, which can be used to type in web search inquiries, open web pages. It also allows to define and use snippets to open web pages without typing the whole domain. Snippets are stored in
 `quick-command-snippets.txt`. One may edit this file either by opening it in any editor, or by running on of the following commands via the quick-command window: `:Edit:`, `:edit:`, `:e:`, `:edit`, `:Edit`, `:e` or `e:`. Most of the times you only want to add a snippet. This can be done by entering any of `:Add:`, ``:add:``, ``:a:``, ``:add``, ``:Add``, `:a` or `a:`. The use is then prompted for the snippet and its expansion.
 
-Note, the `quick-command-snippets.txt` currently needs to be in the same folder as the script. If file is found, the user is asked, if a file shall be created.
+The `quick-command-snippets.txt` is located in `$USER\.config\better-coding`. If the folder and/or file do not exist, they are created.
 
 ### WindowSwitch
 

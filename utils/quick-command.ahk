@@ -3,10 +3,14 @@
 ;
 
 ;-----------------------------------------------
-
-TheFileDir := A_ScriptDir
-TheFilename := "\quick-command-snippets.txt"
+EnvGet, HomeDir, USERPROFILE
+TheFileDir := HomeDir . "\.config\better-coding\"
+If !FileExist(TheFileDir)
+    FileCreateDir, %TheFileDir%
+TheFilename := "quick-command-snippets.txt"
 PathAndFilename := TheFileDir . TheFilename
+If !FileExist(PathAndFilename)
+    FileAppend, , %PathAndFilename%
 Snippet_Entered = False
 Snippets_Edited = 0
 Edit_Window_Id = ""
@@ -14,6 +18,8 @@ QuickCommandWindowExists = 0
 Prefix_Separator = ","
 Body_Separator = ";;;"
 RefreshSnippetsList()
+
+#Include, utils\parse-engine.ahk
 
 ; SUBROUTINES
 ;{-----------------------------------------------
@@ -75,7 +81,7 @@ OpensnippetFile(){
     ; <-- Subroutine to load the snippets
     if !FileExist(PathAndFilename)
     {
-        MsgBox, 52, Error when opening Gooogle Search Snippets, There is no "quick-command-snippets.txt" file in the current working directory. Do you want to create one?
+        MsgBox, 52, Error when opening QuickCommand Snippets, There is no "quick-command-snippets.txt" file in the current working directory. Do you want to create one?
         IfMsgBox, Yes
         {
             FileAppend, , %PathAndFilename%
@@ -138,7 +144,7 @@ ObjIndexOf(obj, item, case_sensitive:=false)
 
 ;-----------------------------------------------
 
-RunQuickCommand(browser="firefox", SearchEngine:="https://www.google.com/search?hl=en&q=", GoSearch:=False){
+RunQuickCommand(browser="firefox", SearchEngine:="google", GoSearch:=False){
     global PathAndFilename, Snippets_Edited, Edit_Window_Id, QuickCommand, Snippet_Entered
     ; <-- Google Search Using Highlighted Text
     Save_Clipboard := ClipboardAll
@@ -179,6 +185,7 @@ RunQuickCommand(browser="firefox", SearchEngine:="https://www.google.com/search?
         {
             browser .= ".exe"
         }
+        SearchEngine := ParseEngine(SearchEngine)
         Query := StrReplace(Query, "`r`n", A_Space) ; prepare the string according to the selected or typed Query. Remarks: `r`n ist the character for a new line in windows
         Query := StrReplace(Query, A_Space, "`%20") ; replace space by %20 according to requirements of URL's
         Query := StrReplace(Query, "#", "`%23") ; # <-> %23
