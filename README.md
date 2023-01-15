@@ -1,3 +1,5 @@
+<img align="left" width="80" height="80" src="https://raw.githubusercontent.com/NicDom/better-coding/main/icons/better-coding-icon.ico" alt="Better coding keyboard icon">
+
 # Better Coding Layout
 ----------------------
 
@@ -5,6 +7,8 @@
 
 This Keyboard Layout is an extension of [kwrtz] german programer [keybord layout][kwrtz-layout].
 Make sure to check his repo out, if you like this one.
+
+This icon was taken from [all-free-download].
 
 ----------------------------
 
@@ -139,6 +143,7 @@ Currently, implemented are window-switches for the following windows/programs:
 - [KeePass]
 - [VSCode]
 - [AutoHotkey-JSON]
+- [all-free-download]
 
 [kwrtz]:            https://github.com/kwrtz
 [kwrtz-layout]:     https://github.com/kwrtz/autohotkey-german-programmer-layer
@@ -149,6 +154,7 @@ Currently, implemented are window-switches for the following windows/programs:
 [KeePass]:          https://keepass.info/
 [VSCode]:           https://code.visualstudio.com/
 [AutoHotkey-JSON]:  https://github.com/cocobelgica/AutoHotkey-JSON
+[all-free-download]:all-free-download.com
 [winlogo]:          https://i.stack.imgur.com/Rfuw7.png
 [newwinlogo]:       https://i.stack.imgur.com/B8Zit.png
 [oldwinlogo]:       https://i.stack.imgur.com/T0oPO.png
