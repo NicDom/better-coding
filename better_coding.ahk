@@ -234,7 +234,7 @@ Return
 <^>!a::SwitchToReferenceManager(ReferenceManager)
 
 ; Hotkey to AltGr+t to launch/restore your chosen Messenger. Default is Telegram Desktop.
-<^>!t::SwitchToMessenger()
+<^>!t::SwitchToWindow("ahk_exe teams.exe", "C:\Users\n.gesing\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Microsoft Teams.lnk")
 
 ; Hotkey to AltGr+s to launch/restore Password Manager. Default is KeePass.
 <^>!s::SwitchToPasswordManager()
