@@ -1,3 +1,6 @@
+; This scripts main function is SwitchToWindow(). All other functions below are
+; only wrappers of this function.
+
 ; GLOBAL VARS AND AUTOEXECUTE
 ;{-----------------------------------------------
 ;
@@ -44,6 +47,14 @@ SwitchToWindow(WinExistCommand, RunCommand, NeedsAdmin:=False)
         }
     }
 }
+
+;-----------------------------------------------
+
+; BELOW ARE WRAPPERS OF SwitchToWindow()
+
+;-----------------------------------------------
+
+
 
 ; EnvGet, vHomeDrive, HOMEDRIVE
 ; EnvGet, vHomePath, HOMEPATH
@@ -122,13 +133,12 @@ SwitchToReferenceManager(manager:="Zotero")
 ;-----------------------------------------------
 SwitchToMessenger()
 {
-    SwitchToApp("Telegram", "Telegram Desktop\Telegram")
+    SwitchToApp("teams", "Microsoft Teams")
 }
 
 ;-----------------------------------------------
 SwitchToBrowser(browser:="firefox")
 {
-    global User, AppsPath
     if browser not contains .exe
     {
         browser .= ".exe"

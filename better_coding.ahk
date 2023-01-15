@@ -19,14 +19,15 @@ SetCapsLockState, AlwaysOff
 #Include, utils\quick-command.ahk
 #Include, utils\window-switch.ahk
 #Include, utils\display-image.ahk
-#Include, utils\parse-engine.ahk
 
 ; GLOBAL VARS AND AUTOEXECUTE
 ;{-----------------------------------------------
 ;
 ; #WinActivateForce
-Browser:= "firefox.exe"
-SearchEngine:=ParseEngine("google")
+Browser:= "firefox"
+SearchEngine:="google"
+ReferenceManager:="Zotero"
+Editor:="code"
 ;-----------------------------------------------
 
 ;<::Shift
@@ -223,13 +224,14 @@ Return
 
 
 ; Hotkey to AltGr+c to launch/restore the Windows Terminal.
-<^>!c::SwitchToWindowsTerminal()
+<^>!c::SwitchToWindow("ahk_exe WindowsTerminal.exe", "wt")
+; or <^>!c::SwitchToWindowsTerminal()
 
 ; Hotkey to AltGr+f to launch/restore the Browser. Default is Firefox.
-<^>!f::SwitchToBrowser()
+<^>!f::SwitchToBrowser(Browser)
 
 ; Hotkey to AltGr+a to launch/restore Reference Manager. Default is Zotero.
-<^>!a::SwitchToReferenceManager()
+<^>!a::SwitchToReferenceManager(ReferenceManager)
 
 ; Hotkey to AltGr+t to launch/restore your chosen Messenger. Default is Telegram Desktop.
 <^>!t::SwitchToMessenger()
