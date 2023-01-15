@@ -19,7 +19,9 @@ Although this layout is based on a QWERTZ keyboard it can easily be adopted to a
 
 ## Installation
 
-To use the script you have to install [AutoHotkey][ahk]. This can either be done via their installer, the Windows Store or using [Scoop][scoop].
+Easiest way to use this script is to download the [latest binary][latest].
+
+If you rather download the .zip or clone the repo to use the script note that you require [AutoHotkey][ahk]. This can either be installed via their installer, the Windows Store or using [Scoop][scoop].
 
 
 <details open>
@@ -158,3 +160,5 @@ Currently, implemented are window-switches for the following windows/programs:
 [winlogo]:          https://i.stack.imgur.com/Rfuw7.png
 [newwinlogo]:       https://i.stack.imgur.com/B8Zit.png
 [oldwinlogo]:       https://i.stack.imgur.com/T0oPO.png
+[latest]:           https://github.com/NicDom/better-coding/releases/latest
+[latest-binary]:    https://github.com/NicDom/better-coding/releases/latest
