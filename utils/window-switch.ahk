@@ -48,6 +48,101 @@ SwitchToWindow(WinExistCommand, RunCommand, NeedsAdmin:=False)
     }
 }
 
+
+; EnvGet, vHomeDrive, HOMEDRIVE
+; EnvGet, vHomePath, HOMEPATH
+EnvGet, HomeDir, USERPROFILE
+
+; HomeDir := vUserProfile
+
+AppsPath := HomeDir . "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"
+
+SystemToolsPath := AppsPath . "\System Tools"
+
+ScoopPath := AppsPath . "\Scoop Apps"
+
+DefaultPathArray := [AppsPath, ScoopPath, SystemToolsPath]
+
+GetDirectories(AppName)
+; Returns an array of all directories that contain the given filename
+; Used to avoid recursive search
+{
+    global DefaultPathArray
+    result := DefaultPathArray
+    for _, Path in DefaultPathArray
+    {
+        Loop, Files, % Path "\*", D
+        {
+            ; MsgBox, % InStr(A_LoopFilename, AppName)
+            if InStr(A_LoopFilename, AppName)
+            {
+                entry := A_LoopFileFullPath
+                ; MsgBox, %entry%
+                result.Push(entry)
+                ; return entry
+            }
+        }
+    }
+    Return result
+}
+
+;-----------------------------------------------
+GetPath(AppName)
+; Tries to find the given file, at several common directories
+; Returns the path, if the file was found
+{
+    if FileExist(AppName)
+    {
+        Return AppName
+    }
+    Paths := GetDirectories(AppName)
+    for _, Path in Paths
+    {
+        Loop, Files, % Path "\*", F
+        {
+            query := AppName . ".lnk"
+            if A_LoopFileName = %query%
+            ; if StrCompare(A_LoopFileName, query) == 0
+            {
+                Return A_LoopFileFullPath
+            }
+        }
+        Loop, Files, % Path "\*", F
+        {
+            query := AppName . ".lnk"
+            if InStr(A_LoopFileName, AppName)
+            ; if StrCompare(A_LoopFileName, query) == 0
+            {
+                Return A_LoopFileFullPath
+            }
+        }
+    }
+    FailMessage := "No File containing '" . AppName . "' was found"
+    MsgBox, %FailMessage%
+}
+
+
+;-----------------------------------------------
+GetFilenameFromPath(Path)
+; Returns the filename from a given path
+{
+    ; Check if file at path exists
+    if !FileExist(Path)
+    {
+        Return Path
+    }
+    ; Get filename from path
+    Parents := StrSplit(Path, ["\"])
+    Filename := Parents[Parents.Length()]
+    If InStr(Filename, ".lnk")
+    {
+        Filename := StrSplit(Filename, ["."])[1]
+        Return Filename
+    }
+
+}
+
+
 ;-----------------------------------------------
 
 ; BELOW ARE WRAPPERS OF SwitchToWindow()
@@ -56,50 +151,22 @@ SwitchToWindow(WinExistCommand, RunCommand, NeedsAdmin:=False)
 
 
 
-; EnvGet, vHomeDrive, HOMEDRIVE
-; EnvGet, vHomePath, HOMEPATH
-EnvGet, HomeDir, USERPROFILE
-
-; HomeDir := vUserProfile
-
-AppsPath := HomeDir . "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\"
-
-ScoopPath := AppsPath . "Scoop Apps\"
 
 ;-----------------------------------------------
 SwitchToWindowsTerminal()
 {
-    SwitchToWindow("ahk_exe WindowsTerminal.exe", "wt")
+    SwitchToWindow("ahk_exe windowsterminal.exe", "wt")
 }
+
+
+
 
 ;-----------------------------------------------
 SwitchToApp(AppName, Applnk:=False, Scoop:=False)
 {
-    global User, AppsPath, ScoopPath
-    AppDir = %AppsPath%
-    if not Applnk
-    {
-        Applnk = %AppName%
-    }
-    if Scoop
-    {
-        AppDir = %ScoopPath%
-    }
-    else
-    {
-        if Applnk not contains \,/
-        {
-            StringUpper, ApplnkCapitalized, Applnk, T
-            Applnk .= "\" . ApplnkCapitalized
-        }
-    }
-    SwitchToWindow("ahk_exe " .  AppName . ".exe", AppDir . Applnk . ".lnk")
-}
-
-;-----------------------------------------------
-SwitchToScoopApp(AppName, Applnk:=False)
-{
-    SwitchToApp(AppName, Applnk, True)
+    AppName := GetFilenameFromPath(AppName)
+    AppPath := GetPath(AppName)
+    SwitchToWindow("ahk_exe " .  AppName . ".exe", AppPath)
 }
 
 
@@ -127,13 +194,13 @@ SwitchToExplorer()
 ;-----------------------------------------------
 SwitchToReferenceManager(manager:="Zotero")
 {
-    SwitchToScoopApp(manager)
+    SwitchToApp(manager)
 }
 
 ;-----------------------------------------------
 SwitchToMessenger()
 {
-    SwitchToApp("teams", "Microsoft Teams")
+    SwitchToApp("Telegram")
 }
 
 ;-----------------------------------------------
@@ -149,5 +216,5 @@ SwitchToBrowser(browser:="firefox")
 ;-----------------------------------------------
 SwitchToPasswordManager(manager:="KeePass")
 {
-    SwitchToScoopApp(manager)
+    SwitchToApp(manager)
 }
