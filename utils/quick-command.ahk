@@ -13,6 +13,7 @@ If !FileExist(PathAndFilename)
     FileAppend, , %PathAndFilename%
 Snippet_Entered = False
 Snippets_Edited = 0
+Config_Edited = 0
 Edit_Window_Id = ""
 QuickCommandWindowExists = 0
 Prefix_Separator = ","
@@ -61,7 +62,7 @@ CallQuickCommandWindow(){
 ;-----------------------------------------------
 
 RefreshSnippetsList(){
-    global SnippetsList, Edit_Window_Id, Snippets_Edited
+    global SnippetsList, Edit_Window_Id, Snippets_Edited, PathAndFilename
     ; <-- Stores the snippets in to Snippetslist
     If Snippets_Edited
     {
@@ -70,33 +71,62 @@ RefreshSnippetsList(){
             Snippets_Edited = 0
         }
     }
-    Snippets = % StrReplace(OpensnippetFile(), "`r`n", A_Space)
-    SnippetsList = % StrSplit(Snippets, [A_Tab,A_Space,"`n","`r","`r`n"], "`n")
+    Snippets :=  StrReplace(ReadFile(PathAndFilename), "`r`n", A_Space)
+    SnippetsList :=  StrSplit(Snippets, [A_Tab,A_Space,"`n","`r","`r`n"], "`n")
 }
+
+
+RefreshConfig(){
+    global Edit_Window_Id, Config_Edited
+    ; <-- Stores the snippets in to Snippetslist
+    If Config_Edited
+    {
+        if !WinExist("ahk_id %Edit_Window_Id%")
+        {
+            Config_Edited = 0
+            LoadConfig()
+        }
+    }
+}
+
 
 ;-----------------------------------------------
 
-OpensnippetFile(){
-    global PathAndFilename
-    ; <-- Subroutine to load the snippets
-    if !FileExist(PathAndFilename)
+ReadFile(Path){
+    ; <-- Subroutine to load a File
+    if !FileExist(Path)
     {
-        MsgBox, 52, Error when opening QuickCommand Snippets, There is no "quick-command-snippets.txt" file in the current working directory. Do you want to create one?
+        MsgBox, 52, Error when opening QuickCommand Snippets, There is no file at "%Path%". Do you want to create one?
         IfMsgBox, Yes
         {
-            FileAppend, , %PathAndFilename%
-            MsgBox, 36, Snippet file created, A Snippet file has been created. Its full path is %PathAndFilename%. Do you want to open and edit the file?
+            FileAppend, , %Path%
+            MsgBox, 36, Snippet file created, A Snippet file has been created. Its full path is %Path%. Do you want to open and edit the file?
             IfMsgBox, Yes
-            Run, Edit "%PathAndFilename%"
+            Run, Edit "%Path%"
         }
         IfMsgBox, No
         MsgBox, 52, Warning, Snippets can not be used in this session
     }
     else
     {
-        FileRead, OutputVar, %PathAndFilename%
+        FileRead, OutputVar, %Path%
         return OutputVar
     }
+}
+
+EditFile(Path, FileName)
+{
+    global Edit_Window_Id
+    If !WinExist("ahk_class Notepad", FileName)
+        {
+            Run, Edit %Path%
+            WinWait, "ahk_class Notepad", FileName,1
+            Edit_Window_Id := WinExist("ahk_class Notepad", FileName )
+        }
+    Else
+        {
+            WinActivate, "ahk_id %Edit_Window_Id%"
+        }
 }
 
 ;-----------------------------------------------
@@ -145,7 +175,7 @@ ObjIndexOf(obj, item, case_sensitive:=false)
 ;-----------------------------------------------
 
 RunQuickCommand(browser="firefox", SearchEngine:="google", GoSearch:=False){
-    global PathAndFilename, Snippets_Edited, Edit_Window_Id, QuickCommand, Snippet_Entered
+    global PathAndFilename, Snippets_Edited, Edit_Window_Id, QuickCommand, Snippet_Entered, ConfigPath, Config_Edited, QuickCommandTime
     ; <-- Google Search Using Highlighted Text
     Save_Clipboard := ClipboardAll
     Clipboard := ""
@@ -160,7 +190,7 @@ RunQuickCommand(browser="firefox", SearchEngine:="google", GoSearch:=False){
     else { ; no text selected - bring up popup
         ; InputBox, Query, Google Search, , , 200, 100
         CallQuickCommandWindow()
-        WinWaitClose, QuickCommandWindow, ,15 , ,
+        WinWaitClose, QuickCommandWindow, ,QuickCommandTime , ,
         if ErrorLevel
         {
             GuiControl, , QuickCommand,
@@ -194,6 +224,7 @@ RunQuickCommand(browser="firefox", SearchEngine:="google", GoSearch:=False){
         ; If Snippets_Edited
         ;     RefreshSnippetsList()
         RefreshSnippetsList()
+        RefreshConfig()
         Query = % Is_Snippet(Query)
         ; if Snippet_Entered
         ; {
@@ -208,20 +239,19 @@ RunQuickCommand(browser="firefox", SearchEngine:="google", GoSearch:=False){
         {
             Add_New_Snippet()
             RefreshSnippetsList()
+            Return
         }
         else if Query in :Edit:,:edit:,:e:,:edit,:Edit,:e,e:
         {
             Snippets_Edited = 1
-            If !WinExist("ahk_class Notepad", "quick-command-snippets" )
-            {
-                Run, Edit %PathAndFilename%
-                WinWait, "ahk_class Notepad", "quick-command-snippets",1
-                Edit_Window_Id := WinExist("ahk_class Notepad", "quick-command-snippets" )
-            }
-            Else
-            {
-                WinActivate
-            }
+            EditFile(PathAndFilename, "quick-command-snippets")
+            Return
+        }
+        else if Query in :c,:config,c:
+        {
+            Config_Edited = 1
+            EditFile(ConfigPath, "init")
+            Return
         }
         ;https://stackoverflow.com/search?q=
         else if Query contains +,..,@
