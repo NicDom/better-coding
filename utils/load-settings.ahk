@@ -71,3 +71,28 @@ LoadConfig()
     EnableCapslock:=Config["EnableCapslock"]
     QuickCommandTime:=Config["QuickCommandTime"]
 }
+
+SaveConfig()
+{
+    global Browser, SearchEngine, ReferenceManager, PasswordManager, Editor, Messenger, SpaceLayer, AltLayer, CapsLayer, ConfigPath, EnableCapslock, QuickCommandTime
+    Config := []
+    Config["Browser"] := Browser
+    Config["SearchEngine"] := SearchEngine
+    Config["ReferenceManager"] := GetFilenameFromPath(ReferenceManager)
+    Config["PasswordManager"] := GetFilenameFromPath(PasswordManager)
+    Config["Editor"] := Editor
+    Config["Messenger"] := GetFilenameFromPath(Messenger)
+    Config["SpaceLayer"] := SpaceLayer
+    Config["AltLayer"] := AltLayer
+    Config["CapsLayer"] := CapsLayer
+    Config["EnableCapslock"] := EnableCapslock
+    Config["QuickCommandTime"] := QuickCommandTime
+    file := FileOpen(ConfigPath, "w", "UTF-8")
+    file.Write()
+    file.Close()
+    file := FileOpen(ConfigPath, "a", "UTF-8")
+    for key, value in Config
+    {
+        file.write(key . " " . value . "`n")
+    }
+}
