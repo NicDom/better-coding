@@ -74,8 +74,8 @@ return
 #if (CapsLayer = 1)
     CapsLock::
         KeyWait, CapsLock
-    ;	If (A_PriorKey="CapsLock")
-    ;		SetCapsLockState, % GetKeyState("CapsLock","T") ? "Off" : "On"
+    	If (A_PriorKey="CapsLock") && (EnableCapslock)
+    		SetCapsLockState, % GetKeyState("CapsLock","T") ? "Off" : "On"
     Return
 #if
 
@@ -273,9 +273,18 @@ return
 ; SOME EXTRA HOTKEYS                            |
                                               ; |
 ;-----------------------------------------------|
-+^F1:: SpaceLayer := Mod(SpaceLayer + 1, 2)
-+^F2:: CapsLayer := Mod(CapsLayer + 1, 2)
-+^F3:: AltLayer := Mod(AltLayer + 1, 2)
++^F1::
+    SpaceLayer := Mod(SpaceLayer + 1, 2)
+    SaveConfig()
+    Return
++^F2::
+    CapsLayer := Mod(CapsLayer + 1, 2)
+    SaveConfig()
+    Return
++^F3::
+    AltLayer := Mod(AltLayer + 1, 2)
+    SaveConfig()
+    Return
 +^F4::
     ToolTip, % ReadFile(ConfigPath)
     KeyWait, F4
