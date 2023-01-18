@@ -276,7 +276,16 @@ return
 +^F1:: SpaceLayer := Mod(SpaceLayer + 1, 2)
 +^F2:: CapsLayer := Mod(CapsLayer + 1, 2)
 +^F3:: AltLayer := Mod(AltLayer + 1, 2)
-
++^F4::
+    ToolTip, % ReadFile(ConfigPath)
+    KeyWait, F4
+    Tooltip
+    Return
++^F5::
+    ToolTip, % ReadFile(PathAndFilename)
+    KeyWait, F5
+    Tooltip
+    Return
 <^>!Space:: RunQuickCommand(Browser, SearchEngine)
 <^>!y:: RunQuickCommand(Browser, SearchEngine, True)
 
