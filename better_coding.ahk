@@ -273,6 +273,9 @@ return
 ; SOME EXTRA HOTKEYS                            |
                                               ; |
 ;-----------------------------------------------|
++^F1:: SpaceLayer := Mod(SpaceLayer + 1, 2)
++^F2:: CapsLayer := Mod(CapsLayer + 1, 2)
++^F3:: AltLayer := Mod(AltLayer + 1, 2)
 
 <^>!Space:: RunQuickCommand(Browser, SearchEngine)
 <^>!y:: RunQuickCommand(Browser, SearchEngine, True)
