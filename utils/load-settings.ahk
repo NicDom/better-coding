@@ -4,7 +4,7 @@ ConfigDir := HomeDir . "\.config\better-coding\"
 ConfigFilename := "init.txt"
 ConfigPath := ConfigDir . ConfigFilename
 
-DefaultConfig := "SpaceLayer 1`nCapsLayer 1`nAltLayer 1`nBrowser firefox`nReferenceManager Zotero`nPasswordManager KeePass`nEditor code`nMessenger teams`nSearchEngine google"
+DefaultConfig := "SpaceLayer 1`nCapsLayer 1`nAltLayer 1`nBrowser firefox`nReferenceManager Zotero`nPasswordManager KeePass`nEditor code`nMessenger teams`nSearchEngine google`nQuickCommandTime 15`nEnableCapslock 0"
 
 If !FileExist(ConfigDir)
     FileCreateDir, %ConfigDir%
@@ -44,7 +44,7 @@ GetConfigDictionary(Path)
 ; Returns the configuration as a dictionary
 {
     result := []
-    ConfigArray := GetConfig(Path)
+    ConfigArray := GetConfigArray(Path)
     for index, element in ConfigArray
     {
         Key := GetKey(element)
@@ -57,7 +57,7 @@ GetConfigDictionary(Path)
 LoadConfig()
 ; Sets the global vars using the config
 {
-    global Browser, SearchEngine, ReferenceManager, PasswordManager, Editor, Messenger, SpaceLayer, AltLayer, CapsLayer, ConfigPath
+    global Browser, SearchEngine, ReferenceManager, PasswordManager, Editor, Messenger, SpaceLayer, AltLayer, CapsLayer, ConfigPath, EnableCapslock, QuickCommandTime
     Config := GetConfigDictionary(ConfigPath)
     Browser:= Config["Browser"]
     SearchEngine:= Config["SearchEngine"]
@@ -68,4 +68,6 @@ LoadConfig()
     SpaceLayer:= Config["SpaceLayer"]
     AltLayer:= Config["AltLayer"]
     CapsLayer:= Config["CapsLayer"]
+    EnableCapslock:=Config["EnableCapslock"]
+    QuickCommandTime:=Config["QuickCommandTime"]
 }
