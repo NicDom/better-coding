@@ -120,16 +120,17 @@ Currently, implemented are window-switches for the following windows/programs:
 - Password Manager (Default [KeePass])
 - Browser (Default Firefox)
 
-!!! IMPORTANT !!!
+The several programs for the window switches are stored in the configuration file (`$USER/.config/better-coding/init.txt`). In most cases it suffices to only
+enter the name of the program, e.g. `teams` or `KeepassXC`. The script tries to find the corresponding '.exe' file in the usual directories. If this method fails you have to enter the full path of the '.exe' in the config file.
 
-**Note, that the paths for the several currently need to be defined in the script. You need to check, if the given ones are correct. Otherwise, adopt them to your needs.**
+## Configuration
 
 
-!!! IMPORTANT !!!
+
 
 # Todo
 
-- Add config.json, such that configurations, like the chosen browser, path files, etc. do not need to be defined in the script.
+- ~~Add config.json, such that configurations, like the chosen browser, path files, etc. do not need to be defined in the script.~~
 - Add Gui to set configuration
 - Create Installer
 
