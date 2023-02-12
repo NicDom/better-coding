@@ -95,4 +95,5 @@ SaveConfig()
     {
         file.write(key . " " . value . "`n")
     }
+    file.Close()
 }
