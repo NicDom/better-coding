@@ -12,5 +12,9 @@ ParseEngine(engine:="google")
             Return "https://duckduckgo.com/?q="
         case "duck":
             Return "https://duckduckgo.com/?q="
+        case "gptgo":
+            Return "https://gptgo.ai/?q="
+        Default:
+            Return "https://" . engine . ".com/search?q="
     }
 }
