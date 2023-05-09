@@ -189,6 +189,7 @@ RunQuickCommand(browser="firefox", SearchEngine:="google", GoSearch:=False){
     }
     else { ; no text selected - bring up popup
         ; InputBox, Query, Google Search, , , 200, 100
+        Clipboard := Save_Clipboard
         CallQuickCommandWindow()
         WinWaitClose, QuickCommandWindow, ,QuickCommandTime , ,
         if ErrorLevel
